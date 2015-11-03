@@ -1,3 +1,5 @@
+// Authors: Kevin and Ransom
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,30 +15,13 @@
         <div>a picture is worth a 1000 words</div>
     </div>
     <div class="bottom_jumbo"><a href="join.html">join now</a></div>
-
 </main>
-<script>
-function changeImage(i) {
 
-    var el = document.getElementsByClassName('jumbotron');
-    console.log("value of i is: " + i);
-    if (i < 10){
-        el[0].style.backgroundImage = "url('images/pdxcg_0" + i + ".jpg')";
-    }
-    if (i > 9 && i < 61) {
-        if (i === 36 || i === 42) {
-            i++;
-        }
-        el[0].style.backgroundImage = "url('images/pdxcg_" + i + ".jpg')";
-    }
-    if (i === 61) {
-        i = 1;
-    }
-    ++i;
-    setTimeout(changeImage, 2000, i);
-} 
-var i = 1; 
-changeImage(i)
+<script src="js/script_index.js"></script>;
+<script>
+    var i = 1; 
+    changeImage(i)
 </script>
+
 </body>
 </html>
