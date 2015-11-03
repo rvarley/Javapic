@@ -9,10 +9,87 @@
 <main class="gallery_page">
     <header>javapic <span class="tagline">develop something beautiful</span></header>
     <section id="gallery" class="gallery">
-        <!--<li><img src="images/pdxcg_01.jpg" /></li>-->
+    <!--  <li><img src="images/pdxcg_01.jpg" /></li> -->
     </section>
     <div id="image_show" class="display_none"><img src="images/pdxcg_40.jpg" /></div>
 </main>
 
 </body>
 </html>
+
+<script>
+var main = document.querySelector(".gallery_page");
+function populate() { // KS: refactor into separate getsource function
+  numImages = 60; // Hard code image numbers
+  for (i = 0; i < numImages; i++) {
+    var newImage = document.createElement("img");
+    if (i < 10) {
+      var imgLi = document.createElement("li");
+      newImage.src = "images/pdxcg_0" + i + ".jpg";
+      imgLi.appendChild(newImage);
+      var position = document.getElementsByTagName("section")[0]
+      position.appendChild(imgLi); 
+    }
+    else {
+      var imgLi = document.createElement("li");
+      //newImage.id = "pdxcg_" + i;
+      newImage.src = "images/pdxcg_" + i + ".jpg";
+      imgLi.appendChild(newImage);
+      var position = document.getElementsByTagName("section")[0]
+      position.appendChild(imgLi);
+    }  
+  }
+};
+function clickPic() {
+  var getSrc = document.getElementsByTagName("img").src;
+  console.log(getSrc);
+  img.src = getSrc;
+  var enlargePic = document.getElementById("image_show");
+  enlargePic.className = "display_img";
+};
+/*function clickPic() {   
+  var enlargePic = document.getElementById("image_show");
+  enlargePic.className = "display_img";*/
+function getTarget(e) {
+  if (!e) {
+    e = window.event;
+  }
+  return e.target || e.srcElement;
+};
+  
+function enlargePic(e) {
+  var target = getTarget(e);
+  var targetSrc = target.getAttribute('src');
+  var imageShow = document.getElementById('image_show');
+  var targetImage = imageShow.firstChild;
+  targetImage.setAttribute('src', targetSrc);
+  imageShow.className = 'display_img';  
+};
+function reducePic(e) {
+  var imageReduce = document.getElementById('image_show'); 
+  imageReduce.className = 'display_none';
+  if (e.preventDefault) {
+    e.preventDefault();
+  } else {
+    e.returnValue = false;
+  }
+}
+if (location.search) {
+    var tagline = document.getElementsByClassName("tagline");
+    nameText = location.search.slice(1);
+    tagline[0].innerHTML = "develop something beautiful, " + nameText + "!";
+}
+populate();
+//Event Listeners
+if (gallery.addEventListener) {
+  gallery.addEventListener('click', function(e) {enlargePic(e);}, false);
+} else {
+  gallery.attachEvent('onclick', function(e) {enlargePic(e);});
+}
+//
+if (main.addEventListener) {
+  main.addEventListener('click', function(e) {reducePic(e);}, true); 
+} else {
+  main.attachEvent('onclick', function(e) {reducePic(e);}); 
+}
+</script>
