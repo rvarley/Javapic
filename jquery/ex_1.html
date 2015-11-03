@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <title>JavaScript &amp; jQuery - Chapter 7: Introducing jQuery - Basic Example</title>
+    <link rel="stylesheet" href="css/c07.css" />
+  </head>
+  <body>
+    <div id="page">
+      <h1 id="header">List</h1>
+      <h2>Buy groceries</h2>
+      <ul>
+        <li id="one" class="hot"><em>fresh</em> figs</li>
+        <li id="two" class="hot">pine nuts</li>
+        <li id="three" class="hot">honey</li>
+        <li id="four" class="cool">balsamic vinegar</li>
+      </ul>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="js/basic-example.js"></script>
+    <script>
+    //var $elem = $('ul').html();
+     //$('ul').append($elem);
+    //$('ul').append$('ul').html();
+    console.log("in html file");
+    // var backgroundColor = $( 'li#four' ) . css( 'background-color' ); 
+    // var $class_name = $( 'li#four' ).class;  // doesn't work - returns undefined  
+    // console.log("Background color is: " + backgroundColor);
+    // console.log("Background color is: " + $class_name);
+    // $('li').css('background-color', '#272727');  // this works
+    //$('li').css('padding-left', '-=20');  //works 
+    //$('li').css({'background-color': '#64C864',
+    //            'font-family': 'Arial'});  //works - overrides class color 'hot'
+    /* $(function() {
+      var backgroundColor = $('li').css('background-color');
+      $('ul').append('<p>Color was: ' + backgroundColor + '</p>');
+      $('li').css({
+        'background-color': '#c5a996',
+        'border': '5px solid #fff',
+        'color': '#000',
+        'font-family': 'Georgia',
+        'padding-left': '+=75'
+      });
+    }); //This worked */
+  /* $(function() {
+    $('ul').before('<p class="notice">Just updated</p');
+    var $newListItem = $('<li><em>gluten-free</em> soy sauce</li>');
+        //<li id="four" class="cool">balsamic vinegar</li>
+        console.log($newListItem);
+    $('li:last').after($newListItem);
+  }); // This works */
+  /* $('li').each(function() {
+    var ids = this.id;
+    $(this).append(' <span class="order"> ' + ids + '</span>');
+    console.log(ids);
+    });
+  $('li').on('click', function() {
+    $(this).addClass('complete');
+  }); */
+  $(function() {
+    var ids = '';
+    var $listItems = $('li');
+
+    $listItems.on('mouseover click', function(e) {
+      $('li span').remove();
+      var date = new Date();
+      date.setTime(e.timeStamp);
+      var clicked = date.toDateString();
+      $(this).append(' <span class="date">' + clicked + ' ' + e.type + '</span>');
+    });
+
+    /* $listItems.on('mouseout', function() {
+      $(this).children('span').remove();
+    }); */
+
+  });
+
+    //var $listText = $('ul').text();
+    //var $listText = $('li').text();
+    //console.log("$listText: " + $listText);
+    //$('ul').append('<p>' + $listText + '</p>');
+    //$('li').append($listText);  
+    // console.log($elem);
+    //$(function() {
+      //$('li:contains("pine")').text('lentils');
+    /* });
+    var $text = $('li:contains("lentils")').text();
+    console.log($text); */
+    $(function() {
+      $('li#three').removeClass('hot');
+      $('li.hot').addClass('favorite');
+      $('ul').attr('id', 'group');
+    });
+    </script>
+  </body>
+</html>
