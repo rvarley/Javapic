@@ -14,19 +14,14 @@
         console.log("name is:" + name);
         console.log("username is:" + username);
         console.log("email is:" + email);
-        if (name === '') {
-            console.log("no name entered");
-        };
-        if (username === '') {
-            console.log("no username entered");
-        };
-        /* if ((re.test(email)) !== true) {
-            alert("Invalid email address");
-        } */
+        if (!ValidateName(name)) {
+            alert("Name required.");
+        }
+        if (!ValidateUsername(username)) {
+            alert("Username required.");
+        }
         if (ValidateEmail(email) !== true) {
             alert("Invalid Email Address");
-            //form.reset();
-            // elements[2].reset();
         } else {
             form.setAttribute("action", "gallery.html?" + name); 
 
@@ -36,21 +31,27 @@
         console.log("elements.name.value is:  " + elements.name.value);
         console.log("querySelector is:  " + loc);
         window.location.href = "gallery.html?" + loc[0].value;
-        // window.location.href = "gallery.html?" + loc[0].value;
-        form.setAttribute("action", "gallery.html?" + elements[0].value); 
-        // window.location.href = "gallery.html";
 
     });
 }());
 
-function ValidateEmail(email) {
-    var re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+function ValidateName(name) {
 
-    if ((re.test(email))) {
+    if (name === '') {
+        return false;
+        console.log("no name entered");
+    } else {
         return true;
     }
-    alert("Invalid email address");
-    return false;
+}
+function ValidateUsername(username) {
+
+    if (username === '') {
+        return false;
+        console.log("no username entered");
+    } else {
+        return true;
+    }
 }
 
 // Helper function to add an event listener
@@ -76,3 +77,14 @@ function removeEvent(el, event, callback) {
     el['e' + event + callback] = null;
   }
 }
+
+function ValidateEmail(email) {
+    var re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+
+    if ((re.test(email))) {
+        return true;
+    }
+    alert("Invalid email address");
+    return false;
+}
+
