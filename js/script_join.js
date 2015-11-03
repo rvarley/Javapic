@@ -20,17 +20,16 @@
         if (!ValidateUsername(username)) {
             alert("Username required.");
         }
-        if (ValidateEmail(email) !== true) {
+        if (!ValidateEmail(email)) {
             alert("Invalid Email Address");
-        } else {
-            form.setAttribute("action", "gallery.html?" + name); 
-
         }
-        form.setAttribute("action", "gallery.html?" + document.querySelector("[name=name]")); 
-        var loc = document.querySelectorAll("#signup input[type='text']");
-        console.log("elements.name.value is:  " + elements.name.value);
-        console.log("querySelector is:  " + loc);
-        window.location.href = "gallery.html?" + loc[0].value;
+        if (ValidateName(name) && ValidateUsername(username) && ValidateEmail(email)) {
+            // form.setAttribute("action", "gallery.html?" + name); 
+            // form.setAttribute("action", "gallery.html?" + document.querySelector("[name=name]")); 
+            var loc = document.querySelectorAll("#signup input[type='text']");
+            window.location.href = "gallery.html?" + loc[0].value;
+        }
+
 
     });
 }());
