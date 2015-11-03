@@ -77,10 +77,11 @@ function removeEvent(el, event, callback) {
   }
 }
 
+//Regex from stack overflow
 function ValidateEmail(email) {
     var re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
 
-    if ((re.test(email))) {
+    if ((re.test(email))) {  // runs the regex against the input email address
         return true;
     }
     alert("Invalid email address");
