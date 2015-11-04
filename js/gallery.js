@@ -1,5 +1,6 @@
 ; // Defensive semicolon.
 // Authors: Kevin and Ransom
+//
 
 //...Global variables...//
 var viewImage = document.getElementById("image_show");
