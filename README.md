@@ -1,2 +1,2 @@
 # Javapic
-First java assignment
+First javascript assignment
